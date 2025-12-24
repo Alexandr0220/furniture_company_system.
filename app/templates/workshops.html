@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Цеха</title>
+  <style>
+    body{font-family:Candara, sans-serif;margin:24px;background:#FFFFFF;}
+    table{border-collapse:collapse;width:100%;}
+    th,td{border:1px solid #ddd;padding:8px;}
+    th{background:#D2DFFF;text-align:left;}
+    .btn{display:inline-block;padding:8px 12px;border:1px solid #355CBD;background:#355CBD;color:#FFFFFF;text-decoration:none;color:#FFFFFF;border-radius:6px;margin-bottom:16px;}
+    footer{margin-top:24px;color:#666;}
+  </style>
+</head>
+<body>
+<h1>Производственные цеха</h1>
+<a class="btn" href="/products">Назад к продукции</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Кол-во человек</th>
+      <th>Время на изготовление (мин)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for w in workshops %}
+    <tr>
+      <td>{{ w.name }}</td>
+      <td>{{ w.workers_count }}</td>
+      <td>{{ w.time_min }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<footer>© 2006–2025</footer>
+</body>
+</html>

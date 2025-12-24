@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Продукция</title>
+  <style>
+    body{font-family:Candara, sans-serif;margin:24px;background:#FFFFFF;}
+    header{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+    table{border-collapse:collapse;width:100%;}
+    th,td{border:1px solid #ddd;padding:8px;}
+    th{background:#D2DFFF;text-align:left;}
+    .actions a{margin-right:10px;}
+    .btn{display:inline-block;padding:8px 12px;border:1px solid #355CBD;background:#355CBD;color:#FFFFFF;text-decoration:none;color:#FFFFFF;border-radius:6px;}
+    footer{margin-top:24px;color:#666;}
+  </style>
+</head>
+<body>
+<header>
+  <img src="/static/logo.jpeg" alt="Логотип" style="height:42px;">
+  <h1>Список продукции</h1>
+  <a class="btn" href="/products/new">Добавить</a>
+  <a class="btn" href="/workshops">Цеха</a>
+</header>
+
+<table>
+  <thead>
+    <tr>
+      <th>Артикул</th>
+      <th>Тип</th>
+      <th>Наименование</th>
+      <th>Мин. цена</th>
+      <th>Материал</th>
+      <th>Время (мин)</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in products %}
+    <tr>
+      <td>{{ p.article }}</td>
+      <td>{{ p.product_type.name }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ "%.2f"|format(p.min_price) }}</td>
+      <td>{{ p.material.name }}</td>
+      <td>{{ p.production_time }}</td>
+      <td class="actions"><a href="/products/{{p.id}}/edit">Редактировать</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<footer>© 2006–2025</footer>
+</body>
+</html>
